@@ -16,32 +16,11 @@ A high-performance, scalable in-memory matchmaking engine for a dating app. This
   - Blocked users
   - Disliked users
   - Already matched users
-- ✅ In-memory storage (no database used)
+- ✅ In-memory storage using singleton store class
 - ✅ Precomputation of match scores at registration
 - ✅ Modular, extensible structure for adding future filters (e.g., gender preference)
-
----
-
-## 📐 Architecture
-
-### Key Components
-
-- **`userProfile`**: Java class representing a user's data (ID, age, gender, location, interests, exclusions, etc.)
-- **`MatchmakingService`**: Core logic for registering users, computing match scores, and retrieving top 5 matches.
-- **`GeoHashUtils`**: Utility to encode latitude/longitude into GeoHash codes using precision level 5 for proximity filtering.
-- **`ProfileController`**: REST controller to handle registration and matchmaking API endpoints.
-
-### Data Structures Used
-
-- `ConcurrentHashMap<String, userProfile>` for fast in-memory access of users by ID.
-- `Map<String, Set<userProfile>>` for geohash-based indexing of users by region.
-- `Map<String, List<MatchScore>>` for storing precomputed match scores for every user (sorted by score).
-
-### Matching Algorithm
-
-- **Shared Interests**: +10 points for each shared interest.
-- **Age Difference**: Linear penalty; the greater the difference, the lower the score.
-- **Proximity**: Only users in the **same geohash quadrant (precision 5)** are considered.
+- ✅ Seed controller to generate dummy profiles
+- ✅ Health check endpoint for service monitoring
 
 ---
 
