@@ -125,5 +125,17 @@ If service is alive.
 
 - Users marked as blocked, disliked, or already matched are excluded from recommendations.
 
+## 🚧 What Would Be Different in Production?
+- Persistent Storage: Replace in-memory store with a scalable database (e.g., SQL or Redis).
+
+- Distributed Architecture: Support horizontal scaling with microservices and data partitioning by geohash region.
+
+- Caching Layer: Use Redis to store hot scores or top matches for performance.
+
+- Profile Event Queue: Use a message broker (like Kafka) to handle real-time scoring updates asynchronously as new users join.
+
+- Security: Add authentication (JWT) and access control to APIs.
+
+
 > ### Designed for speed, accuracy, and scalability — perfect for real-time dating applications!
 
